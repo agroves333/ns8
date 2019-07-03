@@ -1,6 +1,15 @@
 # NS8 Coding Challenge
 
 ## Description
+This is a RESTful API for user tracking software. When a user registers or logs in, an event will also be created with a type REGISTER or LOGIN, respectively.
+
+The API returns:
+All events for all users, all events for a specific user, or all events for the last day. See below for usage.
+
+An event can be created without any relationship to a user, but the register and login endpoints create an event automatically.
+
+Token based authentication was used using JWT's and the event endpoint require that the token be passed in the Authorization header as a Bearer type.
+
 This project was created using NestJS. <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="100" alt="Nest Logo" /></a>
 
 The following NestJS configurations were used:
@@ -73,8 +82,8 @@ curl -i \
 Successful response:
 ```
 {
-    "token": \<token>,
-    "id": \<id>
+    "token": <token>,
+    "id": <id>
 }
 ```
 Invalid email or password response:
@@ -88,12 +97,12 @@ Invalid email or password response:
 ### Get Events for all users
 **GET /user/event**
 
-Guarded endpoint which requires a token which was returned from login.
+Guarded endpoint which requires a token returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer \<token> \
+     -H "Authorization: Bearer <token> \
      -X GET \
      http://localhost:3000/event
 ```
@@ -101,37 +110,38 @@ Successful response:
 ```
 [
     {
-        "_id": \<eventId>,
-        "type": \<eventType>,
-        "user": \<userId>,
-        "created": \<createDate>,
+        "_id": <eventId>,
+        "type": <eventType>,
+        "user": <userId>,
+        "created": <createDate>,
         "__v": 0
     },
     ...
+]
 ```
 
 ### Get Events for single user
 **GET /user/\<userId>/events**
 
-Guarded endpoint which requires a token which was returned from login.
+Guarded endpoint which requires a token returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer \<token> \
+     -H "Authorization: Bearer <token> \
      -X GET \
-     http://localhost:3000/user/\<userId>/events
+     http://localhost:3000/user/<userId>/events
 ```
 Successful response:
 ```
 {
-    "_id": \<userId>,
+    "_id": <userId>,
     "events": [
         {
-            "_id": \<eventId>,
-            "type": \<eventType>,
-            "user": \<userId>,
-            "created": \<createDate>,
+            "_id": <eventId>,
+            "type": <eventType>,
+            "user": <userId>,
+            "created": <createDate>,
             "__v": 0
         },
         ...
@@ -142,12 +152,12 @@ Successful response:
 ### Get Events all events for the last day
 **GET /user/event/lastday**
 
-Guarded endpoint which requires a token which was returned from login.
+Guarded endpoint which requires a token returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer \<token> \
+     -H "Authorization: Bearer <token> \
      -X GET \
      http://localhost:3000/user/event/lastday
 ```
@@ -155,10 +165,10 @@ Successful response:
 ```
 [
     {
-        "_id": \<eventId>,
-        "type": \<eventType>,
-        "user": \<userId>,
-        "created": \<createDate>,
+        "_id": <eventId>,
+        "type": <eventType>,
+        "user": <userId>,
+        "created": <createDate>,
         "__v": 0
     },
     ...
