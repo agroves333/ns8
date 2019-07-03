@@ -108,6 +108,7 @@ Successful response:
         "__v": 0
     },
     ...
+]
 ```
 
 ### Get Events for single user
