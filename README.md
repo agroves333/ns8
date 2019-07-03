@@ -95,7 +95,7 @@ Invalid email or password response:
 ```
 
 ### Get Events for all users
-**GET /user/event**
+**GET /event**
 
 Guarded endpoint which requires a token returned from login.
 ```
