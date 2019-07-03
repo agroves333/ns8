@@ -8,10 +8,9 @@ import { User } from './interfaces/user.interface';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  @UseGuards(AuthGuard())
+  @Post('register')
   async create(@Body() createUserDto: CreateUserDto) {
-    await this.userService.create(createUserDto);
+    return await this.userService.create(createUserDto);
   }
 
   @Get()

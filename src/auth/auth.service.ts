@@ -1,5 +1,5 @@
 import { JwtService } from '@nestjs/jwt';
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
@@ -10,12 +10,17 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async signIn(username, password): Promise<string> {
-    // In the real-world app you shouldn't expose this method publicly
-    // instead, return a token once you verify user credentials
-    const isAuthenticated = await this.userService.isAuthenticated();
-    const user: JwtPayload = { email: 'user@email.com' };
-    return this.jwtService.sign(user);
+  async login(email, password): Promise<any> {
+    const user = await this.userService.findOneByEmail(email);
+
+    user.comparePassword(password, (error, match) => {
+      if (!match || !user) {
+        return new UnauthorizedException();
+      }
+    });
+    await this.userService.createUserEvent(email, 'LOGIN');
+    const payload: JwtPayload = { email };
+    return this.jwtService.sign(payload);
   }
 
   async validateUser(payload: JwtPayload): Promise<any> {

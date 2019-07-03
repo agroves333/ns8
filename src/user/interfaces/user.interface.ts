@@ -4,4 +4,6 @@ export interface User extends Document {
   readonly email: string;
   readonly password: number;
   readonly phone: string;
+  events: any[];
+  comparePassword;
 }
