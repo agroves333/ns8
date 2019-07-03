@@ -88,7 +88,7 @@ Invalid email or password response:
 ### Get Events for all users
 **GET /user/event**
 
-Guarded endpoint which requires a token which was returned from login.
+Guarded endpoint which requires a token returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
@@ -114,7 +114,7 @@ Successful response:
 ### Get Events for single user
 **GET /user/\<userId>/events**
 
-Guarded endpoint which requires a token which was returned from login.
+Guarded endpoint which requires a token returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
@@ -143,7 +143,7 @@ Successful response:
 ### Get Events all events for the last day
 **GET /user/event/lastday**
 
-Guarded endpoint which requires a token which was returned from login.
+Guarded endpoint which requires a token returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
