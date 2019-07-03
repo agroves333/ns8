@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const EventSchema = new Schema({
-  type: String,
+  type: {type: String, required: true},
   created: {
     type: Date,
     default: Date.now,

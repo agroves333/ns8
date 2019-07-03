@@ -4,9 +4,17 @@ import * as bcrypt from 'bcrypt';
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  email: {type: String, index: {unique: true}},
-  password: String,
-  phone: String,
+  email: {type: String, required: true, index: {unique: true}},
+  password: {type: String, required: true},
+  phone: {
+    type: String,
+    validate: {
+      validator: (v) => {
+        return /\d{3}-\d{3}-\d{4}/.test(v);
+      },
+      message: props => `${props.value} is not a valid phone number!`,
+    },
+  },
   events: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
 });
 
