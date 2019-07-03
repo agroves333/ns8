@@ -112,7 +112,7 @@ Successful response:
 ```
 
 ### Get Events for single user
-**GET /user/<userId>/events**
+**GET /user/\<userId>/events**
 
 Guarded endpoint which requires a token which was returned from login.
 ```
