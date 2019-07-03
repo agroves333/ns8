@@ -31,6 +31,7 @@ $ npm run start:prod
 ## Usage
 ### Register User
 **POST /user/register**
+
 Creates a user as well as creates an event of type = 'REGISTER'
 
 ```
@@ -59,6 +60,7 @@ Duplicate user response:
 
 ### Login
 **POST /auth/login**
+
 Authenticates a user as well as creates an event of type = 'LOGIN'
 ```
 curl -i \
@@ -85,6 +87,7 @@ Invalid email or password response:
 
 ### Get Events for all users
 **GET /user/event**
+
 Guarded endpoint which requires a token which was returned from login.
 ```
 curl -i \
@@ -109,6 +112,7 @@ Successful response:
 
 ### Get Events for single user
 **GET /user/\<userId>/events**
+
 Guarded endpoint which requires a token which was returned from login.
 ```
 curl -i \
