@@ -8,12 +8,6 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() creds: CredsDto) {
-    const res = await this.authService.login(creds.email, creds.password);
-    if (res && res.statusCode === 401) {
-      return res;
-    }
-    return {
-      token: res,
-    };
+    return await this.authService.login(creds.email, creds.password);
   }
 }

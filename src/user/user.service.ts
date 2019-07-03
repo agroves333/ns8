@@ -12,12 +12,16 @@ export class UserService {
     @InjectModel('Event') private readonly eventModel: Model<Event>,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<any> {
     try {
       const user = new this.userModel(createUserDto);
-      const res = await user.save();
+      await user.save();
       await this.createUserEvent(createUserDto.email, 'REGISTER');
-      return res;
+      return {
+        success: true,
+        id: user.id,
+        email: user.email,
+      };
     } catch (err) {
       if (err && err.code === 11000) {
         throw new HttpException({
@@ -37,12 +41,19 @@ export class UserService {
     return await this.userModel.find().exec();
   }
 
+  async findAllEventsForUser(id): Promise<any> {
+    return await this.userModel.findById(id, 'events')
+      .populate('events')
+      .lean()
+      .exec();
+  }
+
   async findOneByEmail(email): Promise<User> {
-    return await this.userModel.find({ email }).exec();
+    return await this.userModel.findOne({ email }).exec();
   }
 
   async createUserEvent(email, type) {
-    const user = await this.userModel.find({ email }).exec();
+    const user = await this.userModel.findOne({ email }).exec();
     const event = new this.eventModel({
       type,
       user,
@@ -50,14 +61,5 @@ export class UserService {
     user.events.push(event);
     user.save();
     event.save();
-  }
-
-  async isAuthenticated(email, password): Promise<boolean> {
-    try {
-      const user = await this.userModel.findOne({ email, password }).lean().exec();
-      return user ? true : false;
-    } catch (err) {
-      return false;
-    }
   }
 }

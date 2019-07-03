@@ -19,8 +19,14 @@ export class AuthService {
       }
     });
     await this.userService.createUserEvent(email, 'LOGIN');
-    const payload: JwtPayload = { email };
-    return this.jwtService.sign(payload);
+    const payload: JwtPayload = {
+      id: user.id,
+      email,
+    };
+    return {
+      token: this.jwtService.sign(payload),
+      id: user.id,
+    };
   }
 
   async validateUser(payload: JwtPayload): Promise<any> {
