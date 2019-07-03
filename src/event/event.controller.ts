@@ -19,4 +19,10 @@ export class EventController {
   async findAll(): Promise<Event[]> {
     return this.eventService.findAll();
   }
+
+  @Get('lastday')
+  @UseGuards(AuthGuard())
+  async findAllForLastDay(): Promise<Event[]> {
+    return this.eventService.findAllForLastDay();
+  }
 }
