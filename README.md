@@ -93,7 +93,7 @@ Guarded endpoint which requires a token which was returned from login.
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer \<token> \
+     -H "Authorization: Bearer <token> \
      -X GET \
      http://localhost:3000/event
 ```
@@ -101,10 +101,10 @@ Successful response:
 ```
 [
     {
-        "_id": \<eventId>,
-        "type": \<eventType>,
-        "user": \<userId>,
-        "created": \<createDate>,
+        "_id": <eventId>,
+        "type": <eventType>,
+        "user": <userId>,
+        "created": <createDate>,
         "__v": 0
     },
     ...
@@ -112,27 +112,27 @@ Successful response:
 ```
 
 ### Get Events for single user
-**GET /user/\<userId>/events**
+**GET /user/<userId>/events**
 
 Guarded endpoint which requires a token which was returned from login.
 ```
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer \<token> \
+     -H "Authorization: Bearer <token> \
      -X GET \
-     http://localhost:3000/user/\<userId>/events
+     http://localhost:3000/user/<userId>/events
 ```
 Successful response:
 ```
 {
-    "_id": \<userId>,
+    "_id": <userId>,
     "events": [
         {
-            "_id": \<eventId>,
-            "type": \<eventType>,
-            "user": \<userId>,
-            "created": \<createDate>,
+            "_id": <eventId>,
+            "type": <eventType>,
+            "user": <userId>,
+            "created": <createDate>,
             "__v": 0
         },
         ...
@@ -148,7 +148,7 @@ Guarded endpoint which requires a token which was returned from login.
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer \<token> \
+     -H "Authorization: Bearer <token> \
      -X GET \
      http://localhost:3000/user/event/lastday
 ```
@@ -156,10 +156,10 @@ Successful response:
 ```
 [
     {
-        "_id": \<eventId>,
-        "type": \<eventType>,
-        "user": \<userId>,
-        "created": \<createDate>,
+        "_id": <eventId>,
+        "type": <eventType>,
+        "user": <userId>,
+        "created": <createDate>,
         "__v": 0
     },
     ...
