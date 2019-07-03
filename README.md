@@ -6,6 +6,10 @@ This is a RESTful API for user tracking software. When a user registers or logs 
 The API returns:
 All events for all users, all events for a specific user, or all events for the last day. See below for usage.
 
+An event can be created without any relationship to a user, but the register and login endpoints create an event automatically.
+
+Token based authentication was used using JWT's and the event endpoint require that the token be passed in the Authorization header as a Bearer type.
+
 This project was created using NestJS. <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="100" alt="Nest Logo" /></a>
 
 The following NestJS configurations were used:
