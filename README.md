@@ -102,7 +102,7 @@ Guarded endpoint which requires a token returned from login.
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer <token> \
+     -H "Authorization: Bearer <token>" \
      -X GET \
      http://localhost:3000/event
 ```
@@ -128,7 +128,7 @@ Guarded endpoint which requires a token returned from login.
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer <token> \
+     -H "Authorization: Bearer <token>" \
      -X GET \
      http://localhost:3000/user/<userId>/events
 ```
@@ -157,7 +157,7 @@ Guarded endpoint which requires a token returned from login.
 curl -i \
      -H "Accept: application/json" \
      -H "Content-Type: application/json" \
-     -H "Authorization: Bearer <token> \
+     -H "Authorization: Bearer <token>" \
      -X GET \
      http://localhost:3000/user/event/lastday
 ```
