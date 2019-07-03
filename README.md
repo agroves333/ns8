@@ -73,8 +73,8 @@ curl -i \
 Successful response:
 ```
 {
-    "token": \<token>,
-    "id": \<id>
+    "token": <token>,
+    "id": <id>
 }
 ```
 Invalid email or password response:
