@@ -1,6 +1,11 @@
 # NS8 Coding Challenge
 
 ## Description
+This is a RESTful API for user tracking software. When a user registers or logs in, an event will also be created with a type REGISTER or LOGIN, respectively.
+
+The API returns:
+All events for all users, all events for a specific user, or all events for the last day. See below for usage.
+
 This project was created using NestJS. <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="100" alt="Nest Logo" /></a>
 
 The following NestJS configurations were used:
