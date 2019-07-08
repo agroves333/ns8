@@ -149,7 +149,7 @@ Successful response:
 }
 ```
 
-### Get Events all events for the last day
+### Get all events for the last day
 **GET /user/event/lastday**
 
 Guarded endpoint which requires a token returned from login.
